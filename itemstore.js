@@ -1,11 +1,13 @@
 module.exports = function() {
 	var me = this;
 	var size =0;
-	var _item = [];
-	var _prop = [];
+	var items = [];
+	var props = [];
 
     (function() {
         // read-only properties
+        Object.defineProperty(me, 'items', {get: function() { return items; }});
+        Object.defineProperty(me, 'props', {get: function() { return props; }});
         Object.defineProperty(me, 'size', {get: function() { return size; }});
         // Methods declaration, read-only
         Object.defineProperty(me, 'append', { value: append });
@@ -18,17 +20,17 @@ module.exports = function() {
     // Methods implementation
     function append(item, prop) {
         if (item) {
-            _item.push(item);
-            _prop.push(prop ? prop : null);
+            items.push(item);
+            props.push(prop ? prop : null);
             size++;
         }
     }
 
     function remove(item) {
-    	var i = _item.indexOf(item);
+    	var i = items.indexOf(item);
     	if (i > -1) {
-    		_item.splice(i, 1);
-    		_prop.splice(i, 1);
+    		items.splice(i, 1);
+    		props.splice(i, 1);
 	    	size--;
 	    	return true;
     	}
@@ -36,17 +38,17 @@ module.exports = function() {
     }
 
     function getProp(item) {
-    	var i = _item.indexOf(item);
+    	var i = items.indexOf(item);
     	if (i > -1) {
-    		return _prop[i];
+    		return props[i];
     	}
     	return null;
     }
 
     function setProp(item, prop) {
-    	var i = _item.indexOf(item);
+    	var i = items.indexOf(item);
     	if (i > -1) {
-    		_prop[i] = prop ? prop : null;
+    		props[i] = prop ? prop : null;
     		return true;
     	}
     	return false;
@@ -55,7 +57,7 @@ module.exports = function() {
     function each(func) {
     	if (func instanceof Function) {
     		for (var i = 0; i < size; i++) {
-    			func(_item[i], _prop[i]);
+    			func(items[i], props[i]);
     		}
     	}
     }
