@@ -1,6 +1,6 @@
 {
   "name": "itemstore",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A composite array data structure to store item (number, string, object, etc.) and additional properties.",
   "main": "itemstore.js",
   "scripts": {
