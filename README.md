@@ -1,7 +1,13 @@
 # itemstore
 A composite array data structure to store items (number, string, object, etc.) and additional properties.
 
-Example:
+## Installation
+
+```shell
+npm install itemstore
+```
+
+## Usage example:
 ```javascript
 var store = require('itemstore');
 var collection = new store();
