@@ -1,6 +1,8 @@
 # itemstore
 A composite array data structure to store items (number, string, object, etc.) and additional properties.
 
+(as a practice and example of publishing NPM module and writing test module)
+
 ## Installation
 
 ```shell
